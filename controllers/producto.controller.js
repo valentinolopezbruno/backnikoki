@@ -41,10 +41,9 @@ exports.crearProducto = async (req, res) => {
           nombre: nuevoProducto.nuevaMarca
       }
     });
-    nuevoProducto.idmarca = nuevaMarca.id
+    nuevoProducto.idmarca = await nuevaMarca.id
   }
-  console.log("nuevoProducto--------------------------")
-  console.log(nuevoProducto)
+  //Creo el producto 
   const productos = await prisma.productos.create({
     data: {
       idcategoria: nuevoProducto.idcategoria,
