@@ -71,7 +71,7 @@ exports.actualizarProducto = async (req, res) => {
       idmarca: productoActualizado.idmarca,
       nombre: productoActualizado.nombre,
       precio: productoActualizado.precio,
-      idmoneda: productoActualizado.idmoneda,
+      idmoneda: 1,
       descripcion: productoActualizado.descripcion,
       disponibilidad: productoActualizado.disponibilidad
     }
