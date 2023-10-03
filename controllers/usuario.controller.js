@@ -1,6 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const  bcrypt = require('bcrypt');
 
 
 exports.getUsuarios= async (req, res) => {
@@ -10,12 +9,12 @@ exports.getUsuarios= async (req, res) => {
 
 exports.crearUsuario = async (req, res) => {
   var nuevoUsuario = req.body;
-  const hashedPassword = await bcrypt.hash(nuevoUsuario.password, 10);
+  /* const hashedPassword = await bcrypt.hash(nuevoUsuario.password, 10); */
 
   const usuario = await prisma.usuarios.create({
     data: {
         usuario: nuevoUsuario.usuario,
-        password: hashedPassword
+        password: nuevoUsuario.password
     }
   });
   res.json(usuario);
@@ -30,8 +29,7 @@ exports.validarUsuario = async (req, res) => {
   // Voy comparando uno por uno a ver si coincide con el USERNAME
   for (let i = 0; i < usuarios.length; i++) {
     if(usuarios[i].usuario === usuario){
-      const passwordValid = await bcrypt.compare(password, usuarios[i].password);
-      if(passwordValid){
+      if(usuarios[i].password === password){
         res.json({code:1});
       } else {
         res.json({code:0});
