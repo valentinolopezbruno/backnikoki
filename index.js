@@ -3,7 +3,14 @@ const cors = require('cors'); // Importa el middleware cors
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-app.use(cors());
+
+const corsOptions = {
+  origin: 'http://localhost:4200', // Reemplaza esto con el origen correcto de tu aplicación Angular
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  optionsSuccessStatus: 204, // Algunas respuestas HTTP exitosas no tienen contenido
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
