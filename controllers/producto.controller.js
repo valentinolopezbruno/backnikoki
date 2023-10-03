@@ -23,7 +23,7 @@ exports.crearProducto = async (req, res) => {
 
   // Si la variable nuevaCategoria llega cargada, entonces el usuario quiere crear una nueva categoria.
   // Creo la categoria y le asigno su id al producto que creo posteriormente.
-  if(nuevoProducto.nuevaCategoria != null){
+  if(nuevoProducto.nuevaCategoria.length > 3){
     console.log(nuevoProducto.nuevaCategoria)
     nuevaCategoria = await prisma.categorias.create({
       data: {
@@ -34,7 +34,7 @@ exports.crearProducto = async (req, res) => {
   }
   // Si la variable nuevaMarcallega cargada, entonces el usuario quiere crear una nueva marca.
   // Creo la marca y le asigno su id al producto que creo posteriormente.
-  if(nuevoProducto.nuevaMarca != null){
+  if(nuevoProducto.nuevaMarca.length > 3){
     console.log(nuevoProducto.nuevaCategoria)
     nuevaMarca = await prisma.marcas.create({
       data: {
