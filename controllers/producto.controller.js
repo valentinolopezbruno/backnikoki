@@ -66,16 +66,16 @@ exports.actualizarProducto = async (req, res) => {
   console.log(productoActualizado)
   const producto = await prisma.productos.update({
     where:{
-      id: productoActualizado.id
+      id: productoActualizado.producto.id
     },
     data: {
-      idcategoria: productoActualizado.idcategoria,
-      idmarca: productoActualizado.idmarca,
-      nombre: productoActualizado.nombre,
-      precio: productoActualizado.precio,
+      idcategoria: productoActualizado.producto.idcategoria,
+      idmarca: productoActualizado.producto.idmarca,
+      nombre: productoActualizado.producto.nombre,
+      precio: productoActualizado.producto.precio,
       idmoneda: 1,
-      descripcion: productoActualizado.descripcion,
-      disponibilidad: productoActualizado.disponibilidad
+      descripcion: productoActualizado.producto.descripcion,
+      disponibilidad: productoActualizado.producto.disponibilidad
     }
   });
   if(producto){
