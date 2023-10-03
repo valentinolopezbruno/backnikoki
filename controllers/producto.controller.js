@@ -38,8 +38,6 @@ exports.crearProducto = async (req, res) => {
 
 exports.actualizarProducto = async (req, res) => {
   var productoActualizado = req.body
-  console.log("PRODUCTO QUE LLEGA")
-  console.log(productoActualizado)
   const producto = await prisma.productos.update({
     where:{
       id: productoActualizado.id
@@ -55,8 +53,22 @@ exports.actualizarProducto = async (req, res) => {
     }
   });
   if(producto){
-    console.log("producto que sale")
-    console.log(producto)
+    res.json({code:1})
+  }
+};
+
+exports.actualizarDisponibilidad = async (req, res) => {
+  var {id,disponibilidad} = req.body
+  console.log(id, disponibilidad)
+  const producto = await prisma.productos.update({
+    where:{
+      id: id
+    },
+    data: {
+      disponibilidad: disponibilidad
+    }
+  });
+  if(producto){
     res.json({code:1})
   }
 };
