@@ -20,6 +20,30 @@ exports.eliminarProducto = async (req, res) => {
 exports.crearProducto = async (req, res) => {
   var nuevoProducto = req.body
   console.log(nuevoProducto)
+
+  // Si la variable nuevaCategoria llega cargada, entonces el usuario quiere crear una nueva categoria.
+  // Creo la categoria y le asigno su id al producto que creo posteriormente.
+  if(nuevoProducto.nuevaCategoria != null){
+    console.log(nuevoProducto.nuevaCategoria)
+    nuevaCategoria = await prisma.categorias.create({
+      data: {
+          nombre: nuevoProducto.nuevaCategoria
+      }
+    });
+    nuevoProducto.idcategoria = nuevaCategoria.id
+  }
+  // Si la variable nuevaMarcallega cargada, entonces el usuario quiere crear una nueva marca.
+  // Creo la marca y le asigno su id al producto que creo posteriormente.
+  if(nuevoProducto.nuevaMarca != null){
+    console.log(nuevoProducto.nuevaCategoria)
+    nuevaMarca = await prisma.marcas.create({
+      data: {
+          nombre: nuevoProducto.nuevaMarca
+      }
+    });
+    nuevoProducto.idmarca = nuevaMarca.id
+  }
+
   const productos = await prisma.productos.create({
     data: {
       idcategoria: nuevoProducto.idcategoria,
