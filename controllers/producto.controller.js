@@ -30,7 +30,7 @@ exports.crearProducto = async (req, res) => {
           nombre: nuevoProducto.nuevaCategoria
       }
     });
-    nuevoProducto.idcategoria = nuevaCategoria.id
+    nuevoProducto.idcategoria = await nuevaCategoria.id
   }
   // Si la variable nuevaMarcallega cargada, entonces el usuario quiere crear una nueva marca.
   // Creo la marca y le asigno su id al producto que creo posteriormente.
@@ -43,7 +43,8 @@ exports.crearProducto = async (req, res) => {
     });
     nuevoProducto.idmarca = nuevaMarca.id
   }
-
+  console.log("nuevoProducto--------------------------")
+  console.log(nuevoProducto)
   const productos = await prisma.productos.create({
     data: {
       idcategoria: nuevoProducto.idcategoria,
