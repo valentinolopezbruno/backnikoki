@@ -63,6 +63,7 @@ exports.crearProducto = async (req, res) => {
 exports.actualizarProducto = async (req, res) => {
   console.log("ACTUALIZAR PRODUCTO")
   var productoActualizado = req.body
+  console.log(productoActualizado)
   const producto = await prisma.productos.update({
     where:{
       id: productoActualizado.id
