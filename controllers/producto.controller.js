@@ -53,5 +53,7 @@ exports.actualizarProducto = async (req, res) => {
       disponibilidad: productoActualizado.disponibilidad
     }
   });
-  res.json(producto);
+  if(producto){
+    res.json({code:1})
+  }
 };
