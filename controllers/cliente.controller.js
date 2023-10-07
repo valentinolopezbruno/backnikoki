@@ -24,7 +24,7 @@ exports.crearCliente = async (req, res) => {
 };
 
 exports.eliminarCliente= async (req, res) => {
-    var id = req.body;
-    const clienteEliminado = await prisma.clientes.delete({where:{id:id}});
+    var cliente = req.body;
+    const clienteEliminado = await prisma.clientes.delete({where:{id:cliente.id}});
     res.json(clienteEliminado);
 };
