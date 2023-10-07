@@ -15,7 +15,7 @@ exports.crearCliente = async (req, res) => {
     data: {
         nombre: nuevoCliente.nombre,
         celular: nuevoCliente.celular,
-        direccio: nuevoCliente.direccio,
+        direccion: nuevoCliente.direccion,
         dni: nuevoCliente.dni,
         correo: nuevoCliente.correo
     }
