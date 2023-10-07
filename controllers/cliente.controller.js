@@ -43,7 +43,5 @@ exports.actualizarCliente = async (req, res) => {
       correo: nuevoCliente.correo
     }
   });
-  if(clienteActualizado){
-    res.json(clienteActualizado)
-  }
+  res.json(clienteActualizado)
 };
