@@ -1,20 +1,11 @@
 generator client {
-  provider      = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  provider = "prisma-client-js"
+   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root@localhost:3306/sistemanikoki"
-}
-
-model clientes {
-  id        Int    @id @default(autoincrement())
-  nombre    String @db.VarChar(111)
-  celular   String @db.VarChar(255)
-  direccion String @db.VarChar(250)
-  dni       String @db.VarChar(255)
-  correo    String @db.VarChar(255)
+  url      = "mysql://root:qI0e9IJjhwefm5sIF0Ke@containers-us-west-96.railway.app:6077/railway"
 }
 
 model categorias {
@@ -43,5 +34,3 @@ model usuarios {
   usuario  String @db.VarChar(255)
   password String @db.VarChar(255)
 }
-
-

@@ -26,6 +26,9 @@ app.use('/', categoriaRoutes);
 // USUARIOS
 const usuarioRoutes = require('./routes/usuario.routes');
 app.use('/', usuarioRoutes); 
+// CLIENTES
+const clienteRoutes = require('./routes/cliente.routes');
+app.use('/', clienteRoutes); 
 
 
 app.listen(PORT, () => {
