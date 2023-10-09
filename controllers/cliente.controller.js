@@ -31,6 +31,7 @@ exports.eliminarCliente= async (req, res) => {
 
 exports.actualizarCliente = async (req, res) => {
   var nuevoCliente = req.body;
+  console.log("aa")
   const clienteActualizado = await prisma.clientes.update({
     where:{
       id: nuevoCliente.id
@@ -41,6 +42,7 @@ exports.actualizarCliente = async (req, res) => {
       direccion: nuevoCliente.direccion,
       dni: nuevoCliente.dni,
       correo: nuevoCliente.correo
+
     }
   });
   res.json(clienteActualizado)
